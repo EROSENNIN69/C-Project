@@ -19,15 +19,15 @@ void vegetarian(void);
 void nonvegetarian(void);
 void details(void);
 void aboutus(void);
-
-//void Password(void);
 int getdata();
+
+//Structure Declaration
 struct employee
 {
 
 	char name[30];
 	int id;
-	//char DOB[10];
+	char DOB[10];
 	int dd; int mm; int yyyy;
 	int YOJ;
 	char place[20];
@@ -48,7 +48,15 @@ double total=0;
 int t;
 
 int main()
-	{
+{
+	mainmenu();
+	return 0;
+}
+
+
+void mainmenu(void)
+{
+		{
 	int j;
 	int z;	
 char name[100]="WELCOME TO MY OWN FRICKING HOTEL";	
@@ -58,12 +66,7 @@ printf("\xDB");	}
 	for(j=0;j<=z;j++){		Sleep(60);		
 printf(" %c",name[j]);	}	for(j=0;j<=16;j++){		Sleep(50);		
 printf("\xDB");	}
-	mainmenu();
-	return 0;
 }
-
-void mainmenu(void)
-{
 	printf("         \n\n\n\t\t\t\t\t1. ADMINISTRATION SECTION----> \n\n\n \t\t\t\t\t2. CUSTOMER SECTION----------> \n\n\n              \t\t\t\t3. ABOUT US------------------> \n\n\n       \t\t\t\t\t4. Exit----------------------> \n\n\n        \t\t\t\tEnter Your Choice ----------->");
 	int choice;
 	scanf("%d",&choice);
@@ -85,24 +88,18 @@ void mainmenu(void)
 		printf("\n\n\n");
 		printf("*******************************THANK YOU**************************************\n");
 
-		printf("*********Feeling HUNGRY ? Call or Walk-In DHURMUS-SUNTALI KITCHEN***************\n\n");
+		printf("*********Feeling HUNGRY ? Call or Walk-in Hotel KITCHEN***************\n\n");
 		exit(0);
 	}
 }
 
 void administration(void)
 {
-	//Password();
 	system("cls");
 	printf("**************************************WELCOME TO THE EMPLOYEE SECTION************************************************\n\n");
 	printf("          1. Add New Record\n\n          2. Search Record\n\n          3. Delete Record\n\n          4. View THe Records\n\n          5. View previous orders placed\n\n          6. Back To Main Menu \n\n             Enter Your Choice --->");
 	int n;
 	scanf("%d",&n);
-		printf("\n\n");
-	int wait;
-	{
-		printf("\rIn progress : %d",wait/1000);
-	}
 	printf("\n\n");
 	if(n==1)
 	{
@@ -237,8 +234,8 @@ void searchrecord(void)
     printf("                  1. Search By ID\n");
     printf("                  2. Search By Name\n\n");
     printf("                  Enter Your Choice---> ");
-    fp=fopen("record1.txt","r"); //open file for reading propose
-    rewind(fp);   //move pointer at the begining of file
+    fp=fopen("record1.txt","r");
+    rewind(fp);   
     switch(getch())
     {
 	  case '1':
@@ -345,25 +342,25 @@ void returnfunc(void)
 		printf(" Press ENTER to return to main menu");
     }
     e:
-    if(getch()==13) //allow only use of enter
+    if(getch()==13)
     administration();
     else
     goto e;
 }
 
-int checkid(int c)  //check whether the record is exist in list or not
+int checkid(int c) 
 {
 	rewind(fp);
 	while(fread(&e,sizeof(e),1,fp)==1)
 	if(e.id==c)
 	
-	return 0;  //returns 0 if employee exits
+	return 0; 
     
-	return 1; //return 1 if it not
+	return 1;
 }
 int getdata()
 {
-	//*int t;
+	int t;
 	printf("        Employee ID :\t");
 	scanf("%d",&t);
 	if(checkid(t)==0)
@@ -746,51 +743,3 @@ void aboutus(void)
 	if(getch())
 	mainmenu();
 }
-
-/*void Password(void)
-{
-	system("cls");
-	char d[30]="PASSWORD PROTECTED";
-	char ch,pass[10];
-	int i=0,j;
-	for(j=0;j<20;j++)
-	{
-		delay(50);
-		printf("*");
-	}
-	for(j=0;j<20;j++)
-	{
-		delay(50);
-		printf("%c",d[j]);
-	}
-	for(j=0;j<20;j++)
-	{
-		delay(50);
-		printf("*");
-	}
-	printf("ENTER PASSWORD : ");
-	while(ch!=13)
-	{
-		ch=getch();
-		if(ch!=13 && ch!=8)
-		{
-			putch('*');
-			pass[i]=ch;
-			i++;
-		}
-	}
-	pass[i]='\0';
-	if(strcmp(pass,password)==0)
-	{
-		printf("PASSWORD MATCHED !!!\n\n");
-		printf("Press Any Key To Continue......\n\n");
-		getch();
-		mainmenu();
-	}
-	else
-	{
-		printf("WARNING ! INCORRECT PASSWORD....");
-		getch();
-		Password();
-	}
-}*/
